@@ -10,19 +10,19 @@ contract SEIARMY is
     Ownable // Inherit from Ownable
 {
     uint256 private totalSupply;
-    string private baseTokenURI;
-    uint256 private constant MAX_TOTAL_SUPPLY = 555;
+    string private baseTokenURI; 
+    uint256 private constant MAX_TOTAL_SUPPLY = 555; //change to your preferred Total supply
 
-    constructor(address initialOwner, string memory _baseTokenURI)
+    constructor(address initialOwner,  //Owner's address
+    string memory _baseTokenURI //NFT METADAT URL
+    )
         ERC721("SEIARMY", "SA")
         Ownable(initialOwner)
     {
         baseTokenURI = _baseTokenURI;
     }
-
     function mint() external payable {
         require(totalSupply <= MAX_TOTAL_SUPPLY, "Total supply reached");
-
         totalSupply++;
         uint256 tokenId = totalSupply;
         _safeMint(msg.sender, tokenId);
